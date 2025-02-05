@@ -1,0 +1,20 @@
+Instead of directly subtracting pixels from a percentage-based width, calculate the pixel value based on the percentage first, then use a separate CSS declaration for the margin or padding. This ensures consistent results regardless of the parent element's size. For example:
+
+```css
+.container {
+  width: 80%;
+}
+
+.element {
+  width: calc(80% - 20px);
+  /* Problematic approach */
+}
+
+/* Solution */
+.element {
+  width: 80%;
+  margin-left: 20px;
+  /* Or use padding-left as needed */
+}
+```
+By separating the percentage-based width and the pixel-based adjustment, we avoid the complexities and potential inconsistencies introduced by nested calculations in `calc()`.
